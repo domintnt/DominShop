@@ -6,5 +6,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),
     path('cart/', include('cart.urls', namespace='cart')),
-    path('', views.home, name='home'),  # to odpowiada za stronę główną
+    path('payment/', include('payment.urls', namespace='payment')),
+    path('', views.home, name='home'),
 ]
