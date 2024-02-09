@@ -1,5 +1,38 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <!-- Zawartość koszyka -->
+<div class="cart">
+  <h2>Twój koszyk</h2>
+  {% if cart %}
+    <table>
+      <thead>
+        <tr>
+          <th>Produkt</th>
+          <th>Ilość</th>
+          <th>Cena jednostkowa</th>
+          <th>Cena całkowita</th>
+          <th>Operacje</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart %}
+        <tr>
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.product.price }}</td>
+          <td>{{ item.total_price }}</td>
+          <td>
+            <a href="{% url 'cart:cart_remove' item.product.id %}">Usuń</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p class="total">Suma całkowita: {{ cart.get_total_price }}</p>
+    <a href="{% url 'orders:order_create' %}">Przejdź do zamówienia</a>
+  {% else %}
+    <p>Twój koszyk jest pusty.</p>
+  {% endif %}
+</div>
 {% endblock %}
