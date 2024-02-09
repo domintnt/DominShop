@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Sklep DK</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}">
+            <img src="{% static 'images/logo.png' %}" alt="Logo DK" width="100" height="100">
+        </a>
+        <!-- Tutaj możesz dodać więcej elementów nawigacji -->
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Treść strony głównej zostanie tutaj wstawiona -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        Trlalala
+    </footer>
+</body>
+</html>
